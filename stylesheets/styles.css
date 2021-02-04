@@ -1,0 +1,125 @@
+:root {
+  --very--dark--magenta: hsl(300, 43%, 22%);
+  --soft--pink: hsl(333, 80%, 67%);
+  --dark--grayish--magenta: hsl(303, 10%, 53%);
+  --light--grayish--magenta: hsl(300, 24%, 96%);
+  --white: hsl(0, 0%, 100%);
+  --primary-font: 'Spartan', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--primary-font);
+  padding: 80px 24px 100px;
+}
+
+body, p, blockquote {
+  margin: 0;
+}
+
+.main-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.main-header .title {
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: -3px;
+  line-height: 32px;
+  margin: 0 0 32px;
+  padding: 0 16px;
+  color: var(--very--dark--magenta);
+}
+
+.main-header .description {
+  font-size: 15px;
+  line-height: 1.75;
+  font-weight: 500;
+  color: var(--dark--grayish--magenta);
+  letter-spacing: -1px;
+}
+
+/* Rates */
+
+.rates-container {
+  margin-bottom: 3rem;
+}
+
+.rate {
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--light--grayish--magenta);
+}
+
+.rate:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.rate .stars-container {
+  margin-bottom: .5rem;
+}
+
+.rate .rating {
+  color: var(--very--dark--magenta);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.rate .star {
+  width: 1rem;
+}
+
+/* Testimonials */
+
+.testimonials-contaienr {
+
+}
+
+.testimonial {
+  background-color: var(--very--dark--magenta);
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.testimonial:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.testimonial .header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.testimonial .profile-picture {
+  border-radius: 50%;
+  width: 40px;
+  margin-right: 1.5rem;
+}
+
+.testimonial .title,
+.testimonial .user-role,
+.testimonial .comment {
+  font-size: 13px;
+}
+
+.testimonial .title {
+  margin: 0;
+  margin-bottom: 4px;
+  color: var(--white);
+  font-weight: 400;
+}
+
+.testimonial .user-role {
+  color: var(--soft--pink);
+}
+
+.testimonial .comment {
+  color: var(--white);
+  /* letter-spacing: -1px; */
+  line-height: 22px;
+}
