@@ -18,15 +18,47 @@ body, p, blockquote {
 body {
   font-family: var(--primary-font);
   padding: 80px 24px 100px;
+
+  /*
+   * Es importante darle un min-height de 100vh al height del body porque
+   * si no se lo diésemos, en pantallas que sean muy altas el body quedaría
+   * "cortado" a la mitad (veríamos cómo el fondo inferior se posicionaría
+   * por la mitad de la pantalla más o menos, o donde acabase el body). De
+   * esta manera, conseguimos que en esas pantallas que son muy grandes el
+   * fondo inferior baje siempre hasta el borde inferior de la pantalla.
+   *
+  */
+  min-height: 100vh;
+
+  /*
+   * Para que el fondo del bottom se nos quede siempre abajo del body,
+   * usamos la propiedad background-image y la posicionamos en la parte
+   * inferior derecha con background-position en lugar de asignarla con
+   * body::after. También le decimos que ocupe el 100% del ancho y que
+   * tenga un alto de 300px para que no se redimensione de manera
+   * desproporcionada.
+   * Utilizamos background-image y background-position en lugar del
+   * pseudoelemento ::before del body porque si lo hiciésemos así no
+   * habría manera (o al menos a mí no se me ocurre) de hacer que el
+   * círculo inferior de fondo esté siempre abajo del body
+   * independientemente del contenido que tenga.
+  */
   background-image: url(../images/bg-pattern-bottom-mobile.svg);
   background-repeat: no-repeat;
   background-position: bottom right;
   background-size: 100% 300px;
-  min-height: 100vh;
 }
 
 @media screen and (min-width: 1024px) {
   body {
+    /*
+     * En este caso, cuando se da display: flex al body es necesario
+     * decirle que alinee su contenido al inicio (align-content: flex-start;)
+     * porque si no lo hacemos, el contenido quedará completamente desmaquetado
+     * puesto que tratará de distribuir su contenido de una manera que no es la
+     * que deseamos. Para ver a qué me refiero, podéis inspeccionar la web y
+     * eliminar o deshabilitar el align-content del body a partir de 1024px.
+    */
     display: flex;
     align-content: flex-start;
     flex-wrap: wrap;
@@ -72,13 +104,13 @@ body::before {
 }
 
 .main-header .title {
+  color: var(--very--dark--magenta);
   font-weight: 700;
   font-size: 32px;
   letter-spacing: -3px;
   line-height: 32px;
   margin: 0 0 32px;
   padding: 0 16px;
-  color: var(--very--dark--magenta);
 }
 
 @media screen and (min-width: 1024px) {
@@ -93,10 +125,10 @@ body::before {
 }
 
 .main-header .description {
+  color: var(--dark--grayish--magenta);
   font-size: 15px;
   line-height: 1.75;
   font-weight: 500;
-  color: var(--dark--grayish--magenta);
   letter-spacing: -1px;
 }
 
@@ -131,9 +163,9 @@ body::before {
 }
 
 .rate {
+  background-color: var(--light--grayish--magenta);
   text-align: center;
   padding: 1rem;
-  background-color: var(--light--grayish--magenta);
   border-radius: 8px;
 }
 
@@ -160,6 +192,17 @@ body::before {
     padding: 1rem 2rem;
     width: 375px;
   }
+
+  /*
+   * En lugar de alinear las cajitas con estrellas con margen
+   * a la izquierda, lo que hacemos es llevar todas las cajitas
+   * a la derecha (.rates-container tiene un justify-content:
+   * flex-end) y vamos asignando margen a la derecha de cada
+   * caja. De esta manera lo que conseguimos es que la última
+   * caja se quede perfectamente alineada con la última caja de
+   * los testimonios.
+   *
+  */
 
   .rate:first-child {
     margin-right: 6rem;
@@ -267,9 +310,9 @@ body::before {
 }
 
 .testimonial .title {
+  color: var(--white);
   margin: 0;
   margin-bottom: 4px;
-  color: var(--white);
   font-weight: 400;
 }
 
@@ -279,6 +322,5 @@ body::before {
 
 .testimonial .comment {
   color: var(--white);
-  /* letter-spacing: -1px; */
   line-height: 22px;
 }
